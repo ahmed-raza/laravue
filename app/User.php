@@ -4,6 +4,7 @@ namespace App;
 
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Foundation\Auth\User as Authenticatable;
+use App\Chat;
 
 class User extends Authenticatable
 {
@@ -26,4 +27,7 @@ class User extends Authenticatable
     protected $hidden = [
         'password', 'remember_token',
     ];
+    public function chats() {
+        return $this->belongsToMany(Chat::class);
+    }
 }
