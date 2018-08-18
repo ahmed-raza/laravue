@@ -95,7 +95,6 @@
           fetch(`api/articles/${article_id}`,{
             method: 'delete',
           }).then(response => response.json()).then(data => {
-            alert('Article deleted!');
             this.fetchArticles();
           }).catch(err=>console.log(err))
         }
@@ -112,7 +111,6 @@
           }).then(response => response.json()).then(data => {
             this.article.title = '';
             this.article.body = '';
-            alert('Article added!');
             this.fetchArticles();
           }).catch(err => console.log(err))
         } else {
@@ -127,7 +125,6 @@
             this.article.title = '';
             this.article.body = '';
             this.edit = false;
-            alert('Article updated!');
             this.fetchArticles();
           }).catch(err => console.log(err))
         }
