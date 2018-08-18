@@ -18,7 +18,10 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::get('/home', 'PagesController@home')->name('home');
-Route::get('/chat', 'ChatsController@index')->name('chat');
+
+Route::group(['middleware'=>'auth'], function(){
+  Route::get('/chat', 'ChatsController@index')->name('chat');
+});
 
 /*
 | Api Routes
