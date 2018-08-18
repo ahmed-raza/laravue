@@ -39,7 +39,6 @@
           for (let i = 0; i < response.data.length; i++) {
             this.users.push(response.data[i]);
           }
-          console.log(this.users);
         }).catch(err => console.log(err));
       },
       sendMessage: function() {

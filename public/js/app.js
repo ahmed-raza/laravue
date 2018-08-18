@@ -47742,7 +47742,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         for (var i = 0; i < response.data.length; i++) {
           _this.users.push(response.data[i]);
         }
-        console.log(_this.users);
       }).catch(function (err) {
         return console.log(err);
       });
