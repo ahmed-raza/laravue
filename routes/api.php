@@ -13,8 +13,6 @@ use Illuminate\Http\Request;
 |
 */
 
-Route::middleware('auth:api')->get('/user', function (Request $request) {
-    return $request->user();
-});
-
-Route::resource('articles', 'ArticlesController')->only(['index', 'store', 'update', 'destroy']);
+// Route::middleware('auth:api')->get('/user', function (Request $request) {
+//     return $request->user();
+// });

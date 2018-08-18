@@ -19,3 +19,11 @@ Auth::routes();
 
 Route::get('/home', 'PagesController@home')->name('home');
 Route::get('/chat', 'ChatsController@index')->name('chat');
+
+/*
+| Api Routes
+*/
+
+Route::group(['prefix'=>'api', 'middleware'=>'auth'], function(){
+  Route::resource('users', 'Api\UsersController')->only('index');
+});
