@@ -7,7 +7,7 @@
         <input type="text" name="title" class="form-control" v-model="article.title">
       </div>
       <div class="form-group">
-        <label>Title</label>
+        <label>Body</label>
         <textarea name="body" class="form-control" v-model="article.body"></textarea>
       </div>
       <div class="form-group">
@@ -27,7 +27,8 @@
         </li>
       </ul>
     </nav>
-    <table class="table">
+    <button @click="getArticles" class="btn btn-warning">Refresh</button>
+    <table class="table table-hovered">
       <thead>
         <tr>
           <th>ID</th>
