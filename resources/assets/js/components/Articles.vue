@@ -17,13 +17,13 @@
     <nav aria-label="Page navigation example">
       <ul class="pagination">
         <li class="page-item" v-bind:class="[{disabled: !pagination.prev_page_url}]">
-          <a class="page-link" href="#" @click="fetchArticles(pagination.prev_page_url)">Previous</a>
+          <a class="page-link" href="#" @click="getArticles(pagination.prev_page_url)">Previous</a>
         </li>
         <li class="page-item disabled">
           <a class="page-link text-dark" href="#">Page {{ pagination.current_page }} of {{ pagination.last_page }}</a>
         </li>
         <li class="page-item" v-bind:class="[{disabled: !pagination.next_page_url}]">
-          <a class="page-link" href="#" @click="fetchArticles(pagination.next_page_url)">Next</a>
+          <a class="page-link" href="#" @click="getArticles(pagination.next_page_url)">Next</a>
         </li>
       </ul>
     </nav>
@@ -69,10 +69,10 @@
       }
     },
     created() {
-      this.fetchArticles();
+      this.getArticles();
     },
     methods: {
-      fetchArticles: function(page_url){
+      getArticles: function(page_url){
         let vm = this;
         axios.get('/api/articles').then(response => {
           this.articles = response.data.data;
@@ -95,7 +95,7 @@
             method: 'delete',
           }).then(response => response.json()).then(data => {
             alert('Article deleted!');
-            this.fetchArticles();
+            this.getArticles();
           }).catch(err=>console.log(err))
         }
       },
@@ -112,7 +112,7 @@
             this.article.title = '';
             this.article.body = '';
             alert('Article added!');
-            this.fetchArticles();
+            this.getArticles();
           }).catch(err => console.log(err))
         } else {
           // Update
@@ -127,7 +127,7 @@
             this.article.body = '';
             this.edit = false;
             alert('Article updated!');
-            this.fetchArticles();
+            this.getArticles();
           }).catch(err => console.log(err))
         }
       },
