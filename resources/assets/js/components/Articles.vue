@@ -74,11 +74,10 @@
     methods: {
       fetchArticles: function(page_url){
         let vm = this;
-        page_url = page_url || '/api/articles'
-        fetch(page_url).then(response => response.json()).then(res => {
-          this.articles = res.data;
-          vm.makePagination(res.meta, res.links)
-        }).catch(err=>console.log(err))
+        axios.get('/api/articles').then(response => {
+          this.articles = response.data.data;
+          vm.makePagination(response.data.meta, response.data.links)
+        }).catch(error=>console.log(error))
       },
       makePagination: function(meta, links) {
         let pagination = {
