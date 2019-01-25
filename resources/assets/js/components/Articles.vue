@@ -110,13 +110,7 @@
           }).catch(err => console.log(err))
         } else {
           // Update
-          fetch(`api/articles/${this.article.id}`, {
-            method: 'put',
-            body: JSON.stringify(this.article),
-            headers: {
-              'content-type': 'application/json'
-            }
-          }).then(response => response.json()).then(data => {
+          axios.patch(`api/articles/${this.article.id}`, this.article).then(data => {
             this.article.title = '';
             this.article.body = '';
             this.edit = false;
