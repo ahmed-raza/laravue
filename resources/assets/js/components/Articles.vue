@@ -91,9 +91,9 @@
       },
       deleteArticle: function(article_id) {
         if (confirm('Are you sure?')) {
-          fetch(`api/articles/${article_id}`,{
+          axios.delete(`api/articles/${article_id}`,{
             method: 'delete',
-          }).then(response => response.json()).then(data => {
+          }).then(data => {
             alert('Article deleted!');
             this.getArticles();
           }).catch(err=>console.log(err))
@@ -102,13 +102,7 @@
       addArticle: function() {
         if (this.edit === false) {
           // Add
-          fetch('api/articles', {
-            method: 'post',
-            body: JSON.stringify(this.article),
-            headers: {
-              'content-type': 'application/json'
-            }
-          }).then(response => response.json()).then(data => {
+          axios.post('api/articles', this.article).then(data => {
             this.article.title = '';
             this.article.body = '';
             alert('Article added!');
